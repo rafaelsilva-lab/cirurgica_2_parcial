@@ -284,17 +284,20 @@
     gap: 6px;
   }
   .card ul li {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
+    display: block;
+    padding-left: 14px;
+    position: relative;
     font-size: 13.5px;
     color: #c9d1d9;
+    line-height: 1.6;
   }
+  .card ul li > * { flex-shrink: 0; }
   .card ul li::before {
     content: '›';
+    position: absolute;
+    left: 0;
     font-size: 16px;
-    line-height: 1.3;
-    flex-shrink: 0;
+    line-height: 1.4;
     color: var(--muted);
   }
 
@@ -532,9 +535,9 @@
 <body>
 
 <div class="header">
-  <div class="header-tag">Enfermagem Técnica</div>
+  <div class="header-tag">Técnico em Enfermagem</div>
   <h1>Clínica <span>Cirúrgica II</span></h1>
-  <p>Resumo de estudo — Profa. Jucélia Schittini</p>
+  <p>Resumo dos Slides — Profa. Jucélia Schittini</p>
 </div>
 
 <nav class="nav">
@@ -719,7 +722,7 @@
           <th>Posição</th>
           <th>Descrição</th>
           <th>Indicações</th>
-          <th>Medidas de Segurança e Conforto</th>
+          <th>Medidas de Segurança</th>
         </tr>
       </thead>
       <tbody>
@@ -894,8 +897,8 @@
         <div class="card-label amber">Mecanismo</div>
         <h3>Como funciona</h3>
         <ul>
-          <li>Estímulo → receptores de dor → terminações nervosas → <strong>cérebro</strong> interpreta e sente dor</li>
-          <li>Anestésicos bloqueiam o impulso elétrico nas células nervosas → cérebro não recebe o estímulo</li>
+          <li>Estímulo → receptores de dor → terminações nervosas → <strong>cérebro</strong> interpreta e sente a dor</li>
+          <li>Anestésicos bloqueiam o impulso elétrico nas células nervosas → <strong>cérebro não recebe o estímulo</strong></li>
         </ul>
       </div>
     </div>
