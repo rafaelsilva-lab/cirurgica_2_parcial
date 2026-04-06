@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Cirúrgica I — Material de Estudo</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2333;
+    --border: #30363d;
+    --teal: #00d4aa;
+    --teal-dim: rgba(0,212,170,0.12);
+    --amber: #f0a500;
+    --amber-dim: rgba(240,165,0,0.12);
+    --rose: #e05c7a;
+    --rose-dim: rgba(224,92,122,0.12);
+    --blue: #58a6ff;
+    --blue-dim: rgba(88,166,255,0.12);
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --radius: 12px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0a0f14 0%, #0d1c26 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 40px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 0%, rgba(0,212,170,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 100%, rgba(88,166,255,0.06) 0%, transparent 60%);
+  }
+  .header-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 1px solid rgba(0,212,170,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    position: relative;
+  }
+  .header h1 span { color: var(--teal); }
+  .header p {
+    color: var(--muted);
+    margin-top: 14px;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(13,17,23,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 52px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--teal);
+    letter-spacing: 1px;
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .nav-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--teal);
+    border-color: rgba(0,212,170,0.35);
+    background: var(--teal-dim);
+  }
+
+  /* HAMBURGER */
+  .ham-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .ham-btn:hover { background: var(--surface2); }
+  .ham-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+  .ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .ham-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE DROPDOWN */
+  .nav-drawer {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px 16px;
+    border-top: 1px solid var(--border);
+    background: rgba(13,17,23,0.98);
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    padding: 11px 16px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-drawer a:hover, .nav-drawer a.active {
+    color: var(--teal);
+    border-color: rgba(0,212,170,0.3);
+    background: var(--teal-dim);
+  }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .nav-logo { display: block; }
+    .ham-btn { display: flex; }
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* SECTION */
+  .section {
+    margin-top: 64px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .icon-teal { background: var(--teal-dim); border: 1px solid rgba(0,212,170,0.25); }
+  .icon-amber { background: var(--amber-dim); border: 1px solid rgba(240,165,0,0.25); }
+  .icon-rose { background: var(--rose-dim); border: 1px solid rgba(224,92,122,0.25); }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-title small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media(max-width:700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 22px 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card.teal { border-top: 3px solid var(--teal); }
+  .card.amber { border-top: 3px solid var(--amber); }
+  .card.rose { border-top: 3px solid var(--rose); }
+  .card.blue { border-top: 3px solid var(--blue); }
+
+  .card-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card-label.teal { color: var(--teal); }
+  .card-label.amber { color: var(--amber); }
+  .card-label.rose { color: var(--rose); }
+  .card-label.blue { color: var(--blue); }
+
+  .card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card ul li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    color: #c9d1d9;
+  }
+  .card ul li::before {
+    content: '›';
+    font-size: 16px;
+    line-height: 1.3;
+    flex-shrink: 0;
+    color: var(--muted);
+  }
+
+  /* POSICIONAMENTO TABLE */
+  .pos-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .pos-table th {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 2px solid var(--border);
+    background: var(--surface2);
+  }
+  .pos-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: #c9d1d9;
+  }
+  .pos-table tr:last-child td { border-bottom: none; }
+  .pos-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .pos-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+    margin-bottom: 3px;
+  }
+  .badge-teal { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(0,212,170,0.2); }
+  .badge-amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,165,0,0.2); }
+  .badge-rose { background: var(--rose-dim); color: var(--rose); border: 1px solid rgba(224,92,122,0.2); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(88,166,255,0.2); }
+
+  /* DRUG TABLE */
+  .drug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .drug-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .drug-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .drug-card p {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .drug-card .ex {
+    font-size: 11px;
+    margin-top: 6px;
+    color: var(--amber);
+    font-style: italic;
+  }
+
+  /* ANESTHESIA TYPE CARDS */
+  .anest-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media(max-width:700px) { .anest-cards { grid-template-columns: 1fr; } }
+
+  .anest-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .anest-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-size: 13.5px;
+  }
+  .callout-teal { background: var(--teal-dim); border: 1px solid rgba(0,212,170,0.25); color: #a3f0e0; }
+  .callout-amber { background: var(--amber-dim); border: 1px solid rgba(240,165,0,0.25); color: #f5cc77; }
+  .callout-rose { background: var(--rose-dim); border: 1px solid rgba(224,92,122,0.25); color: #f0a0b4; }
+  .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0 0;
+  }
+
+  /* TIMELINE for CC areas */
+  .zone-flow {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .zone {
+    flex: 1;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .zone:not(:last-child) { border-right: 1px solid var(--border); }
+  .zone h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .zone ul { list-style: none; font-size: 12px; color: var(--muted); }
+  .zone ul li { padding: 2px 0; }
+  .zone-nr { background: rgba(88,166,255,0.06); }
+  .zone-nr h4 { color: var(--blue); }
+  .zone-sr { background: rgba(240,165,0,0.06); }
+  .zone-sr h4 { color: var(--amber); }
+  .zone-r { background: rgba(224,92,122,0.06); }
+  .zone-r h4 { color: var(--rose); }
+  @media(max-width:600px) {
+    .zone-flow { flex-direction: column; }
+    .zone:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  /* ACCORDION */
+  .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .acc-item { border-bottom: 1px solid var(--border); }
+  .acc-item:last-child { border-bottom: none; }
+  .acc-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 20px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  .acc-btn:hover { background: var(--surface2); }
+  .acc-btn .chevron { transition: transform 0.2s; font-size: 16px; color: var(--muted); }
+  .acc-btn.open .chevron { transform: rotate(180deg); }
+  .acc-body {
+    display: none;
+    padding: 0 20px 18px;
+    font-size: 13.5px;
+    color: #c9d1d9;
+    background: var(--surface);
+    line-height: 1.65;
+  }
+  .acc-body.show { display: block; }
+  .acc-body ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .acc-body ul li::before { content: '→ '; color: var(--teal); font-weight: 700; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 10px; }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--teal-dim);
+    border: 1px solid rgba(0,212,170,0.3);
+    border-radius: 50%;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .step-content p { font-size: 13px; color: var(--muted); }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">Enfermagem Técnica</div>
+  <h1>Clínica <span>Cirúrgica II</span></h1>
+  <p>Resumo de estudo — Profa. Jucélia Schittini</p>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">CC·II</span>
+    <div class="nav-links">
+      <a href="#cc" class="active">Centro Cirúrgico</a>
+      <a href="#posicionamento">Posicionamento</a>
+      <a href="#anestesia">Anestesia</a>
+      <a href="#pre-anest">Pré-Anestesia</a>
+      <a href="#drogas">Drogas</a>
+      <a href="#assist">Assistência</a>
+    </div>
+    <button class="ham-btn" id="hamBtn" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#cc">🏥 Centro Cirúrgico</a>
+    <a href="#posicionamento">🛏️ Posicionamento</a>
+    <a href="#anestesia">💉 Anestesia</a>
+    <a href="#pre-anest">📋 Pré-Anestesia</a>
+    <a href="#drogas">💊 Drogas</a>
+    <a href="#assist">🩺 Assistência de Enfermagem</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ======================== CENTRO CIRÚRGICO ======================== -->
+  <section class="section" id="cc">
+    <div class="section-header">
+      <div class="section-icon icon-teal">🏥</div>
+      <div class="section-title">Centro Cirúrgico<small>Conceito · Organização · Equipe</small></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card teal">
+        <div class="card-label teal">Definição</div>
+        <h3>O que é o C.C.?</h3>
+        <ul>
+          <li>Unidade com instalações especializadas para cirurgias com segurança</li>
+          <li>Localizado próximo à UTI, Emergência, CME e internação cirúrgica</li>
+          <li>Ambiente asséptico, pouco ruído e acesso restrito</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-label amber">Objetivos</div>
+        <h3>Finalidade do C.C.</h3>
+        <ul>
+          <li>Realizar cirurgias em condições seguras</li>
+          <li>Prestar assistência no pré-operatório imediato e transoperatório</li>
+          <li>Campo de estágio e formação de recursos humanos</li>
+        </ul>
+      </div>
+    </div>
+
+    <br>
+    <div class="callout callout-amber">
+      <div class="callout-icon">⏰</div>
+      <div>Cirurgias eletivas: períodos matutino e vespertino. Emergências: 24h. Escala entregue às unidades até as <strong>18h do dia anterior</strong>. Primeiras cirurgias às <strong>07h</strong>.</div>
+    </div>
+
+    <!-- Zonas -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Classificação das Áreas</h3>
+    <div class="zone-flow">
+      <div class="zone zone-nr">
+        <h4>🟦 Não Restrita</h4>
+        <ul>
+          <li>Vestiários</li>
+          <li>Secretaria</li>
+          <li>Recepção do cliente</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;">Sem uniforme privativo</p>
+      </div>
+      <div class="zone zone-sr">
+        <h4>🟨 Semi-Restrita</h4>
+        <ul>
+          <li>Corredor</li>
+          <li>Expurgo</li>
+          <li>Posto de enfermagem</li>
+          <li>Copa / estar</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;">Uniforme privativo completo</p>
+      </div>
+      <div class="zone zone-r">
+        <h4>🟥 Restrita</h4>
+        <ul>
+          <li>Lavabo</li>
+          <li>Salas cirúrgicas</li>
+        </ul>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;">Uniforme + máscara obrigatória <br><strong style="color:var(--rose)">Zona estéril</strong></p>
+      </div>
+    </div>
+
+    <!-- Equipe -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Equipe e Atribuições</h3>
+    <div class="grid-3">
+      <div class="card blue">
+        <div class="card-label blue">Enfermeiro</div>
+        <h3>Gestão</h3>
+        <ul>
+          <li>Gerenciamento da unidade</li>
+          <li>Procedimentos privativos do enfermeiro</li>
+          <li>Supervisão da equipe técnica</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <div class="card-label teal">Técnico de Enfermagem</div>
+        <h3>Circulante de Sala</h3>
+        <ul>
+          <li>Recepcionar e transferir pacientes</li>
+          <li>Auxiliar na paramentação</li>
+          <li>Organização geral das cirurgias</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-label amber">Circulante — Detalhes</div>
+        <h3>Ações Intraoperatórias</h3>
+        <ul>
+          <li>Testar luzes, foco e aparelhos</li>
+          <li>Posicionar e restringir o paciente</li>
+          <li>Colocar placa de bisturi elétrico</li>
+          <li>Conferir compressas no fechamento</li>
+          <li>Transportar para SRPA ao final</li>
+          <li>Limpar e desinfectar a sala</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Limpeza da sala -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Limpeza Pós-Cirúrgica (sequência)</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><h4>Remover material cirúrgico contaminado</h4><p>Colocar em recipientes adequados e encaminhar para reprocessamento</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><h4>Remover material de anestesia</h4><p>Encaminhar ao expurgo para desinfecção</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><h4>Reprocessar materiais estéreis não utilizados</h4><p>Encaminhar conforme protocolo da CME</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><h4>Desinfetar mobiliário com álcool 70%</h4><p>Começar pelas prateleiras/aparelhos → por último a mesa cirúrgica. Sangue ressecado: descontaminar antes com solução desinfetante</p></div>
+      </div>
+    </div>
+
+    <div class="callout callout-teal" style="margin-top:20px">
+      <div class="callout-icon">👤</div>
+      <div>O paciente entra no CC com <strong>camisola aberta nas costas, sem roupas íntimas</strong>, acompanhado de <strong>prontuário, exames e termo de consentimento assinado</strong>.</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ======================== POSICIONAMENTO ======================== -->
+  <section class="section" id="posicionamento">
+    <div class="section-header">
+      <div class="section-icon icon-rose">🛏️</div>
+      <div class="section-title">Posicionamento Cirúrgico<small>Posições · Indicações · Medidas de Segurança</small></div>
+    </div>
+
+    <div class="callout callout-teal">
+      <div class="callout-icon">💡</div>
+      <div>Uma boa posição garante: manutenção das funções <strong>respiratória e circulatória</strong>, prevenção de pressão sobre nervos/músculos, exposição adequada do campo cirúrgico e acesso para anestesia.</div>
+    </div>
+
+    <div class="callout callout-amber" style="margin-top:12px">
+      <div class="callout-icon">⚠️</div>
+      <div><strong>Atentar sempre:</strong> sem contato direto com metal da mesa · uso de coxins · olhos/orelhas/nariz protegidos · cobertor aquecido se frio · alopecia occipital → girar cabeça a cada 30 min</div>
+    </div>
+
+    <!-- BIG TABLE -->
+    <div style="overflow-x:auto;margin-top:24px;border:1px solid var(--border);border-radius:var(--radius);">
+    <table class="pos-table">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Descrição</th>
+          <th>Indicações</th>
+          <th>Medidas de Segurança e Conforto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pos-name">Supina / Decúbito Dorsal</span></td>
+          <td>Paciente deitado sobre o dorso, braços em posição anatômica, palmas voltadas para o corpo, pernas descruzadas e paralelas, coluna alinhada</td>
+          <td>
+            <span class="badge badge-teal">Abdominal</span>
+            <span class="badge badge-teal">Vascular</span>
+            <span class="badge badge-teal">Torácica</span>
+            <span class="badge badge-teal">Indução Anestésica</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Correia no joelho (evitar queda)</li>
+              <li>→ Faixas MMSS (agitação)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Prona / Decúbito Ventral</span></td>
+          <td>Paciente sobre o ventre, cabeça lateralizada, braços no suporte. Coxins sob ombros (expansão pulmonar) e tornozelos. Em mulheres: liberação das mamas</td>
+          <td>
+            <span class="badge badge-amber">Dorsal</span>
+            <span class="badge badge-amber">Lombar</span>
+            <span class="badge badge-amber">Sacrococcígea</span>
+            <span class="badge badge-amber">Occipital</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Correia de joelho</li>
+              <li>→ Faixas de membros</li>
+              <li>→ Coxins nos ombros (respiração)</li>
+              <li>→ Travesseiro (evitar compressão de vasos do pescoço)</li>
+              <li>→ Coxim nos tornozelos (distensão muscular)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Lateral / De Sims</span></td>
+          <td>Paciente em decúbito lateral. Braço de cima pode ser flexionado e apoiado acima da cabeça</td>
+          <td>
+            <span class="badge badge-blue">Rins/Ureteres</span>
+            <span class="badge badge-blue">Pulmão</span>
+            <span class="badge badge-blue">Esôfago</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Correia de quadril</li>
+              <li>→ Apoio anterior e posterior do tronco</li>
+              <li>→ Travesseiro entre as pernas (flebite)</li>
+              <li>→ Apoio para braços (plexo braquial)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Trendelenburg</span></td>
+          <td>Decúbito dorsal com cabeça mais baixa que os pés (mesa inclinada). Pelve e MMII elevados</td>
+          <td>
+            <span class="badge badge-rose">Pélvica</span>
+            <span class="badge badge-rose">Cólon</span>
+            <span class="badge badge-rose">Laparoscopia abdome inferior</span>
+            <span class="badge badge-rose">PA baixa</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Braçadeiras nos ombros (afastadas do pescoço)</li>
+              <li>→ Correias nas coxas</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Trendelenburg Reverso / Proclive</span></td>
+          <td>Decúbito dorsal com cabeça e tórax elevados, MMII abaixados. Para tireóide: pescoço hiperestendido com elevação dos ombros</td>
+          <td>
+            <span class="badge badge-teal">Cabeça e pescoço</span>
+            <span class="badge badge-teal">Tireóide</span>
+            <span class="badge badge-teal">Reduzir PA</span>
+            <span class="badge badge-teal">Alças intestinais inf.</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Correia / apoio de pés</li>
+              <li>→ Atenção à hiperestensão cervical</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Litotomia / Ginecológica</span></td>
+          <td>Derivada do decúbito dorsal. MMII elevados em perneiras acolchoadas fixadas com correias</td>
+          <td>
+            <span class="badge badge-amber">Ginecológica</span>
+            <span class="badge badge-amber">Urológica</span>
+            <span class="badge badge-amber">Endoscópica</span>
+            <span class="badge badge-amber">Anuretal</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Perneiras acolchoadas (compressão circulatória)</li>
+              <li>→ Proteção das pernas com campos (esfriamento)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Fowler Modificada</span></td>
+          <td>Posição sentada em 90°. Dorso elevado, joelhos flexionados, suporte de pé fixado. MMII flexionados para prevenir queda</td>
+          <td>
+            <span class="badge badge-blue">Neurocirurgia</span>
+            <span class="badge badge-blue">Mamoplastia</span>
+            <span class="badge badge-blue">Abdominoplastia</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Fixação dos joelhos</li>
+              <li>→ Suporte de pé firme</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="pos-name">Canivete / Kraske</span></td>
+          <td>Derivada da ventral. MMII, tórax e MMSS abaixados; corpo fletido sobre a mesa, mantendo região operatória no ponto mais alto</td>
+          <td>
+            <span class="badge badge-rose">Proctológica (anal)</span>
+            <span class="badge badge-rose">Coluna lombar</span>
+          </td>
+          <td>
+            <ul style="list-style:none;font-size:12.5px;line-height:1.8;">
+              <li>→ Correias no joelho (imobilizar pernas)</li>
+              <li>→ Rolos sob ombros (apoiar braços)</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Recursos de Proteção -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Recursos de Proteção</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="badge badge-teal" style="padding:5px 12px;font-size:12px;">Colchonetes</span>
+      <span class="badge badge-teal" style="padding:5px 12px;font-size:12px;">Braçadeiras</span>
+      <span class="badge badge-teal" style="padding:5px 12px;font-size:12px;">Travesseiros</span>
+      <span class="badge badge-teal" style="padding:5px 12px;font-size:12px;">Perneiras</span>
+      <span class="badge badge-teal" style="padding:5px 12px;font-size:12px;">Fixadores de braços e pernas</span>
+      <span class="badge badge-amber" style="padding:5px 12px;font-size:12px;">Colchão piramidal (caixa de ovo)</span>
+      <span class="badge badge-amber" style="padding:5px 12px;font-size:12px;">Protetores de calcâneo</span>
+      <span class="badge badge-amber" style="padding:5px 12px;font-size:12px;">Protetores crânio-faciais</span>
+      <span class="badge badge-rose" style="padding:5px 12px;font-size:12px;">Correia</span>
+      <span class="badge badge-rose" style="padding:5px 12px;font-size:12px;">Arco de narcose</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ======================== ANESTESIA ======================== -->
+  <section class="section" id="anestesia">
+    <div class="section-header">
+      <div class="section-icon icon-amber">💉</div>
+      <div class="section-title">Anestesia<small>Conceito · Tipos · Vias</small></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card teal">
+        <div class="card-label teal">Conceito</div>
+        <h3>Anestesia vs Analgesia</h3>
+        <ul>
+          <li><strong>Anestesia:</strong> perda da sensibilidade dolorosa + perda de consciência + amnésia</li>
+          <li><strong>Analgesia:</strong> perda da dor <em>com preservação</em> da consciência</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-label amber">Mecanismo</div>
+        <h3>Como funciona</h3>
+        <ul>
+          <li>Estímulo → receptores de dor → terminações nervosas → <strong>cérebro</strong> interpreta e sente dor</li>
+          <li>Anestésicos bloqueiam o impulso elétrico nas células nervosas → cérebro não recebe o estímulo</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Tipos de Anestesia</h3>
+    <div class="anest-cards">
+      <div class="anest-card" style="border-top:3px solid var(--teal)">
+        <h4 style="color:var(--teal)">🔴 Geral</h4>
+        <p style="font-size:13px;color:#c9d1d9;margin-bottom:10px;">Depressão total do SNC: inconsciente, sem reflexos, sem dor. Passa por estágios progressivos até anestesia cirúrgica.</p>
+        <div style="font-size:12px;color:var(--muted)"><strong style="color:var(--text)">Vias:</strong>
+          <ul style="list-style:none;margin-top:4px;">
+            <li>→ <strong>Inalatória</strong> — agente gasoso/volátil via respiratória (Sevoflurano, Isoflurano, Halotano, N₂O)</li>
+            <li>→ <strong>Endovenosa</strong> — droga por via venosa (Propofol, Tiopental, Ketamina, Fentanil, Etomidato)</li>
+            <li>→ <strong>Balanceada</strong> — combinação inalatório + EV</li>
+          </ul>
+        </div>
+      </div>
+      <div class="anest-card" style="border-top:3px solid var(--amber)">
+        <h4 style="color:var(--amber)">🟡 Regional</h4>
+        <p style="font-size:13px;color:#c9d1d9;margin-bottom:10px;">Bloqueia a condução nervosa de uma região. <strong>Consciência preservada.</strong></p>
+        <div style="font-size:12px;color:var(--muted)">
+          <ul style="list-style:none;margin-top:4px;">
+            <li>→ <strong>Raquianestesia</strong> — espaço subaracnóideo lombar → MMII, períneo, abdome inferior</li>
+            <li>→ <strong>Peridural</strong> — espaço epidural (ao redor da duramater)</li>
+            <li>→ <strong>Bloqueio nervoso</strong> — região que inerva a área a ser operada</li>
+            <li>→ <strong>Local (infiltração)</strong> — injeção nos tecidos próximos à incisão</li>
+          </ul>
+        </div>
+      </div>
+      <div class="anest-card" style="border-top:3px solid var(--blue)">
+        <h4 style="color:var(--blue)">🔵 Sedação</h4>
+        <p style="font-size:13px;color:#c9d1d9;margin-bottom:10px;">Estado entre consciência e inconsciência. Reduz ansiedade e dor sem anestesia geral completa.</p>
+        <div style="font-size:12px;color:var(--muted)">Geralmente associada a anestesia local para procedimentos menos invasivos.</div>
+      </div>
+    </div>
+
+    <!-- Complicações -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Complicações da Anestesia Regional</h3>
+    <div class="grid-2">
+      <div class="card rose">
+        <div class="card-label rose">Raquianestesia</div>
+        <h3>Complicações</h3>
+        <ul>
+          <li><strong>Cefaléia:</strong> pulsátil, piora ao sentar/levantar → tto: decúbito dorsal + hidratação + analgésico</li>
+          <li><strong>Hipotensão:</strong> bloqueio simpático → vasodilatação → tto: hidratação rigorosa + O₂ + Trendelenburg</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <div class="card-label amber">Peridural</div>
+        <h3>Complicações</h3>
+        <ul>
+          <li>Falha de bloqueio</li>
+          <li>Punção subaracnóide acidental</li>
+          <li>Anestesia subdural total</li>
+          <li>Toxicidade sistêmica (injeção intravascular)</li>
+          <li>Infecção local / hematoma peridural</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Término -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Reversão da Anestesia Geral</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><h4>Interromper agente anestésico</h4><p>Inalatório ou endovenoso</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><h4>Administrar drogas antagonistas</h4><p><strong>Neostigmina</strong> (relaxante muscular) · <strong>Naloxona</strong> (opiáceos) · <strong>Flumazenil</strong> (benzodiazepínicos)</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><h4>Desmame do ventilador</h4><p>Após recuperação da função muscular e antagonização dos depressores respiratórios</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><h4>Desintubação</h4><p>Aspirar e manter O₂ suplementar nos primeiros momentos</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ======================== PRÉ-ANESTESIA ======================== -->
+  <section class="section" id="pre-anest">
+    <div class="section-header">
+      <div class="section-icon icon-teal">📋</div>
+      <div class="section-title">Pré-Anestesia<small>Avaliação · Finalidade · Preparo</small></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card teal">
+        <div class="card-label teal">Conceito</div>
+        <h3>O que é?</h3>
+        <p style="font-size:13.5px;color:#c9d1d9;">Preparo clínico e emocional do paciente antes do ato anestésico-cirúrgico. Inclui administração de <strong>drogas pré-anestésicas</strong> para melhores condições clínicas e emocionais.</p>
+      </div>
+      <div class="card rose">
+        <div class="card-label rose">Finalidade das drogas</div>
+        <h3>Objetivos</h3>
+        <ul>
+          <li>Reduzir ansiedade</li>
+          <li>Promover sonolência / sedação</li>
+          <li>Promover amnésia perioperatória</li>
+          <li>Aliviar dores pré-existentes</li>
+          <li>Manter paciente cooperativo</li>
+          <li>Amenizar efeitos colaterais dos anestésicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Avaliação Pré-Anestésica</h3>
+    <div class="callout callout-teal">
+      <div class="callout-icon">📝</div>
+      <div>Identificação · Diagnóstico cirúrgico e intercorrências · Idade e peso · Uso de álcool/fumo/tóxicos · Exame de cabeça, pescoço e vias aéreas</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ======================== DROGAS ======================== -->
+  <section class="section" id="drogas">
+    <div class="section-header">
+      <div class="section-icon icon-amber">💊</div>
+      <div class="section-title">Drogas Anestésicas<small>Classes · Efeitos · Exemplos</small></div>
+    </div>
+
+    <div class="drug-grid">
+      <div class="drug-card" style="border-top:2px solid var(--teal)">
+        <h4>Hipnóticos / Sedativos</h4>
+        <p>Barbitúricos: sedação e alívio da ansiedade. Não barbitúricos: para alérgicos a barbitúricos.</p>
+        <p class="ex">Ex: Pentobarbital, Propofol, Etomidato</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--teal)">
+        <h4>Ansiolíticos</h4>
+        <p>Reduzem ansiedade e agitação no pré-operatório.</p>
+        <p class="ex">Ex: Diazepam (Diazepan), Midazolam (Dormonid)</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--amber)">
+        <h4>Opiáceos / Hipnoanalgésicos</h4>
+        <p>Indicados para dor. Efeitos: náuseas, vômitos, constipação, retenção urinária, bradicardia, hipotensão. Fentanil pode causar rigidez muscular.</p>
+        <p class="ex">Ex: Morfina, Fentanil, Meperidina, Alfentanil</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--amber)">
+        <h4>Anti-Histamínicos</h4>
+        <p>Sedação, diminuem salivação, náuseas/vômitos e controlam ritmo cardíaco.</p>
+        <p class="ex">Ex: Hidroxizina (Fenergan)</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--rose)">
+        <h4>Anticolinérgicos</h4>
+        <p>Diminuem secreção das vias aéreas, prevenindo broncoaspiração. Efeitos: boca seca, taquicardia, turvação visual.</p>
+        <p class="ex">Ex: Atropina, Glicopirrolato</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--rose)">
+        <h4>Antieméticos</h4>
+        <p>Previnem náuseas e vômitos peri-operatórios.</p>
+        <p class="ex">Ex: Metoclopramida</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--blue)">
+        <h4>Relaxantes Musculares</h4>
+        <p><strong>Não fornecem sedação nem analgesia.</strong> Facilitam intubação, relaxamento muscular, ventilação mecânica. ⚠️ Paralisam o paciente farmacologicamente.</p>
+        <p class="ex">Ex: Quelicin, Pavulon, Norcuron, Tracrium, Esmeron</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--blue)">
+        <h4>Óxido Nitroso (N₂O)</h4>
+        <p>Anestésico gasoso mais usado. Não inflamável, não irritante, efeito analgésico, cheiro agradável. Potência baixa → associado a outros agentes. Efeito colateral: náuseas/vômitos.</p>
+      </div>
+      <div class="drug-card" style="border-top:2px solid var(--muted)">
+        <h4>Líquidos Voláteis (Inalatórios)</h4>
+        <p>Administrados via sistema respiratório. Alta potência.</p>
+        <p class="ex">Sevoflurano · Isoflurano · Halotano</p>
+      </div>
+    </div>
+
+    <div class="callout callout-rose" style="margin-top:20px">
+      <div class="callout-icon">🚨</div>
+      <div><strong>Anestésicos IV:</strong> margem de segurança muito baixa — a dose anestésica efetiva fica próxima da dose letal. Requer avaliação detalhada e acesso venoso pérvio com tree-way.</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ======================== ASSISTÊNCIA ======================== -->
+  <section class="section" id="assist">
+    <div class="section-header">
+      <div class="section-icon icon-teal">🩺</div>
+      <div class="section-title">Assistência de Enfermagem<small>Monitorização · Segurança · Papel da Equipe</small></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card teal">
+        <div class="card-label teal">Durante a Anestesia</div>
+        <h3>Monitorização</h3>
+        <ul>
+          <li><strong>Esfignomanômetro</strong> — PA contínua</li>
+          <li><strong>Monitor ECG</strong> — ritmo cardíaco</li>
+          <li><strong>Oxímetro (saturímetro)</strong> — SpO₂</li>
+        </ul>
+        <br>
+        <h3>Acesso Vascular</h3>
+        <ul>
+          <li>Calibre adequado na admissão do paciente</li>
+          <li>Sempre acoplar <strong>three-way</strong> ao acesso venoso</li>
+        </ul>
+      </div>
+      <div class="card rose">
+        <div class="card-label rose">Integridade Física</div>
+        <h3>Paciente sob Anestesia Geral</h3>
+        <ul>
+          <li>Verificar se os <strong>olhos estão ocluídos</strong> (úlcera de córnea)</li>
+          <li>Conferir posicionamento correto (escaras/isquemia)</li>
+          <li>Posicionar corretamente a <strong>placa neutra do eletrocautério</strong></li>
+          <li>Evitar contato do paciente com objetos metálicos</li>
+          <li>Observar manutenção do acesso venoso pérvio (evitar necrose)</li>
+        </ul>
+      </div>
+    </div>
+
+    <br>
+    <div class="callout callout-amber">
+      <div class="callout-icon">🤝</div>
+      <div><strong>Papel da Enfermagem:</strong> a orientação sobre anestesia deve ser feita pelo <strong>médico anestesista</strong> e <strong>completada pela enfermeira</strong>. A equipe deve dominar os anestésicos e seus efeitos para auxiliar de forma satisfatória, sem interferir na conduta.</div>
+    </div>
+
+    <!-- Accordion: O paciente no CC -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin:28px 0 14px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">O Paciente no Centro Cirúrgico</h3>
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggle(this)">
+          😟 Medos Comuns do Paciente
+          <span class="chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <ul>
+            <li>Ambiente e pessoas desconhecidas / aparelhos</li>
+            <li>Medo da anestesia — acordar antes de terminar</li>
+            <li>Não acordar após a cirurgia</li>
+            <li>Sentir dor durante o procedimento</li>
+            <li>Morrer</li>
+          </ul>
+          <p style="margin-top:10px;color:var(--muted);font-size:13px;">A enfermagem deve acolher, orientar e tranquilizar o paciente antes do encaminhamento ao CC.</p>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggle(this)">
+          ✅ Checklist Pré-Operatório Imediato
+          <span class="chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <ul>
+            <li>Cuidados pré-operatórios realizados</li>
+            <li>Prontuário completo</li>
+            <li>Exames em mão</li>
+            <li>Termo de consentimento assinado</li>
+            <li>Camisola aberta nas costas, sem roupas íntimas</li>
+            <li>Identificação do paciente confirmada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggle(this)">
+          🧹 Limpeza — Pontos-Chave
+          <span class="chevron">▼</span>
+        </button>
+        <div class="acc-body">
+          <ul>
+            <li>Manter porta fechada durante o procedimento</li>
+            <li>Limitar circulação de pessoal</li>
+            <li>Técnica asséptica em todos os materiais invasivos</li>
+            <li>Descontaminar secreções com solução desinfetante antes do álcool 70%</li>
+            <li>Desinfetar da periferia para a mesa cirúrgica (por último)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<div class="footer">
+  Material de estudo — Clínica Cirúrgica I · Profa. Jucélia Schittini &nbsp;|&nbsp; Use como complemento, não substitua o conteúdo completo das aulas.
+</div>
+
+<script>
+  // Accordion
+  function toggle(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('show');
+    // close all
+    document.querySelectorAll('.acc-body.show').forEach(b => b.classList.remove('show'));
+    document.querySelectorAll('.acc-btn.open').forEach(b => b.classList.remove('open'));
+    if (!isOpen) {
+      body.classList.add('show');
+      btn.classList.add('open');
+    }
+  }
+
+  // Hamburger
+  function toggleMenu() {
+    const btn = document.getElementById('hamBtn');
+    const drawer = document.getElementById('navDrawer');
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  }
+
+  // Nav active on scroll
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-links a, .nav-drawer a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Smooth scroll + close drawer on click
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
+      // close mobile drawer
+      document.getElementById('hamBtn').classList.remove('open');
+      document.getElementById('navDrawer').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
