@@ -537,7 +537,7 @@
 <div class="header">
   <div class="header-tag">Técnico em Enfermagem</div>
   <h1>Clínica <span>Cirúrgica II</span></h1>
-  <p>Resumo dos Slides — Profa. Jucélia Schittini</p>
+  <p>Resumo — Profa. Jucélia Schittini</p>
 </div>
 
 <nav class="nav">
@@ -550,6 +550,7 @@
       <a href="#pre-anest">Pré-Anestesia</a>
       <a href="#drogas">Drogas</a>
       <a href="#assist">Assistência</a>
+      <a href="#quiz" style="color:var(--teal);border-color:rgba(0,212,170,0.25);background:var(--teal-dim)">🧠 Quiz</a>
     </div>
     <button class="ham-btn" id="hamBtn" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -562,6 +563,7 @@
     <a href="#pre-anest">📋 Pré-Anestesia</a>
     <a href="#drogas">💊 Drogas</a>
     <a href="#assist">🩺 Assistência de Enfermagem</a>
+    <a href="#quiz" style="color:var(--teal);background:var(--teal-dim);border-color:rgba(0,212,170,0.3)">🧠 Quiz</a>
   </div>
 </nav>
 
@@ -1179,16 +1181,649 @@
 
 </div>
 
+<!-- ======================== QUIZ ======================== -->
+<div class="container">
+  <section class="section" id="quiz">
+    <div class="section-header">
+      <div class="section-icon icon-teal">🧠</div>
+      <div class="section-title">Quiz<small>30 questões · nível concurso público</small></div>
+    </div>
+
+    <div class="callout callout-teal" style="margin-bottom:28px">
+      <div class="callout-icon">📌</div>
+      <div>Clique em um tema para expandir as questões. Tente responder antes de revelar o gabarito.</div>
+    </div>
+
+    <!-- QUIZ BLOCK 1: Centro Cirúrgico -->
+    <div class="quiz-block" id="qb-cc">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-cc')">
+        <span class="qtopic-icon">🏥</span>
+        <span class="qtopic-label">Centro Cirúrgico</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q1">
+          <p class="q-num">Questão 01</p>
+          <p class="q-text">Em relação à localização do Centro Cirúrgico dentro da estrutura hospitalar, é CORRETO afirmar que ele deve estar situado:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q1" value="A"><span class="opt-letter">A</span><span>Próximo à lavanderia e ao almoxarifado central, para facilitar a reposição de materiais.</span></label>
+            <label class="opt"><input type="radio" name="q1" value="B"><span class="opt-letter">B</span><span>Próximo à unidade de emergência, UTI, unidades de internação cirúrgica e CME, em ambiente asséptico e com pouco ruído.</span></label>
+            <label class="opt"><input type="radio" name="q1" value="C"><span class="opt-letter">C</span><span>No andar térreo do hospital, independente da proximidade com outras unidades, desde que de fácil acesso ao público.</span></label>
+            <label class="opt"><input type="radio" name="q1" value="D"><span class="opt-letter">D</span><span>Adjacente ao pronto-socorro e ao estacionamento, priorizando o acesso de ambulâncias.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q1','B','Próximo à UTI, emergência, CME e internação cirúrgica — ambiente asséptico e silencioso.')">Ver gabarito</button>
+          <div class="q-answer" id="q1-ans"></div>
+        </div>
+
+        <div class="q-card" id="q2">
+          <p class="q-num">Questão 02</p>
+          <p class="q-text">A área do Centro Cirúrgico onde é permitida a permanência de pessoas sem uniforme privativo, pois não compromete o controle asséptico do setor, denomina-se:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q2" value="A"><span class="opt-letter">A</span><span>Área restrita.</span></label>
+            <label class="opt"><input type="radio" name="q2" value="B"><span class="opt-letter">B</span><span>Área semi-restrita.</span></label>
+            <label class="opt"><input type="radio" name="q2" value="C"><span class="opt-letter">C</span><span>Área não restrita.</span></label>
+            <label class="opt"><input type="radio" name="q2" value="D"><span class="opt-letter">D</span><span>Zona estéril.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q2','C','Área não restrita: vestiários, secretaria e recepção do cliente — não exige uniforme privativo.')">Ver gabarito</button>
+          <div class="q-answer" id="q2-ans"></div>
+        </div>
+
+        <div class="q-card" id="q3">
+          <p class="q-num">Questão 03</p>
+          <p class="q-text">Ao final de uma cirurgia, o técnico de enfermagem circulante deve proceder à limpeza da sala. Assinale a sequência CORRETA:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q3" value="A"><span class="opt-letter">A</span><span>Mesa cirúrgica → aparelhos → material de anestesia → instrumental contaminado.</span></label>
+            <label class="opt"><input type="radio" name="q3" value="B"><span class="opt-letter">B</span><span>Instrumental contaminado → material de anestesia → materiais estéreis não usados → mobiliário periférico com álcool 70% → mesa cirúrgica por último.</span></label>
+            <label class="opt"><input type="radio" name="q3" value="C"><span class="opt-letter">C</span><span>Material de anestesia → instrumental → mesa cirúrgica → mobiliário periférico.</span></label>
+            <label class="opt"><input type="radio" name="q3" value="D"><span class="opt-letter">D</span><span>Limpeza geral com água e sabão seguida de álcool 70% em todos os equipamentos simultaneamente.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q3','B','A limpeza parte do material contaminado → anestesia → estéreis não usados → mobiliário periférico → mesa cirúrgica por último, tudo com álcool 70%.')">Ver gabarito</button>
+          <div class="q-answer" id="q3-ans"></div>
+        </div>
+
+        <div class="q-card" id="q4">
+          <p class="q-num">Questão 04</p>
+          <p class="q-text">São atribuições do técnico de enfermagem atuando como circulante de sala, EXCETO:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q4" value="A"><span class="opt-letter">A</span><span>Auxiliar no posicionamento do paciente, restringindo-o sem comprimir vasos e nervos.</span></label>
+            <label class="opt"><input type="radio" name="q4" value="B"><span class="opt-letter">B</span><span>Colocar a placa neutra do bisturi elétrico e verificar as condições da área de aplicação.</span></label>
+            <label class="opt"><input type="radio" name="q4" value="C"><span class="opt-letter">C</span><span>Realizar procedimentos privativos do enfermeiro e gerenciar a unidade cirúrgica.</span></label>
+            <label class="opt"><input type="radio" name="q4" value="D"><span class="opt-letter">D</span><span>Conferir compressas desprezadas no momento do fechamento dos planos anatômicos.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q4','C','Gerenciamento e procedimentos privativos são competências do enfermeiro, não do técnico.')">Ver gabarito</button>
+          <div class="q-answer" id="q4-ans"></div>
+        </div>
+
+        <div class="q-card" id="q5">
+          <p class="q-num">Questão 05</p>
+          <p class="q-text">Quanto ao funcionamento do Centro Cirúrgico, é INCORRETO afirmar que:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q5" value="A"><span class="opt-letter">A</span><span>As cirurgias eletivas são realizadas nos períodos matutino e vespertino.</span></label>
+            <label class="opt"><input type="radio" name="q5" value="B"><span class="opt-letter">B</span><span>O paciente deve ser encaminhado ao CC com prontuário, exames e termo de consentimento assinado.</span></label>
+            <label class="opt"><input type="radio" name="q5" value="C"><span class="opt-letter">C</span><span>A escala de cirurgias deve ser entregue às unidades de internação geralmente até as 18h do dia anterior.</span></label>
+            <label class="opt"><input type="radio" name="q5" value="D"><span class="opt-letter">D</span><span>O paciente deve ser encaminhado ao CC com suas roupas pessoais para preservar o pudor e o conforto térmico.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q5','D','O correto é camisola aberta nas costas e sem roupas íntimas — não roupas pessoais.')">Ver gabarito</button>
+          <div class="q-answer" id="q5-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUIZ BLOCK 2: Posicionamento -->
+    <div class="quiz-block" id="qb-pos">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-pos')">
+        <span class="qtopic-icon">🛏️</span>
+        <span class="qtopic-label">Posicionamento Cirúrgico</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q6">
+          <p class="q-num">Questão 06</p>
+          <p class="q-text">A posição cirúrgica indicada para cirurgias da região dorsal, lombar, sacrococcígea e occipital, na qual o paciente fica sobre o ventre com cabeça lateralizada e braços apoiados, é denominada:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q6" value="A"><span class="opt-letter">A</span><span>Posição de Trendelenburg.</span></label>
+            <label class="opt"><input type="radio" name="q6" value="B"><span class="opt-letter">B</span><span>Posição de Fowler modificada.</span></label>
+            <label class="opt"><input type="radio" name="q6" value="C"><span class="opt-letter">C</span><span>Posição prona ou decúbito ventral.</span></label>
+            <label class="opt"><input type="radio" name="q6" value="D"><span class="opt-letter">D</span><span>Posição de litotomia.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q6','C','Decúbito ventral (prona): paciente sobre o ventre, usada para dorso, lombar, sacrococcígea e occipital.')">Ver gabarito</button>
+          <div class="q-answer" id="q6-ans"></div>
+        </div>
+
+        <div class="q-card" id="q7">
+          <p class="q-num">Questão 07</p>
+          <p class="q-text">Na posição de Trendelenburg, a cabeça do paciente fica mais baixa do que os pés. Essa posição pode ser utilizada, além das cirurgias pélvicas, para:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q7" value="A"><span class="opt-letter">A</span><span>Melhorar a circulação no córtex cerebral quando a pressão arterial cai repentinamente.</span></label>
+            <label class="opt"><input type="radio" name="q7" value="B"><span class="opt-letter">B</span><span>Facilitar o acesso à região cervical e à tireoide.</span></label>
+            <label class="opt"><input type="radio" name="q7" value="C"><span class="opt-letter">C</span><span>Reduzir a pressão intracraniana em neurocirurgias.</span></label>
+            <label class="opt"><input type="radio" name="q7" value="D"><span class="opt-letter">D</span><span>Promover expansão pulmonar bilateral em cirurgias torácicas.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q7','A','Trendelenburg aumenta o fluxo sanguíneo arterial para o crânio quando a PA cai repentinamente.')">Ver gabarito</button>
+          <div class="q-answer" id="q7-ans"></div>
+        </div>
+
+        <div class="q-card" id="q8">
+          <p class="q-num">Questão 08</p>
+          <p class="q-text">Na posição de litotomia ou ginecológica, os membros inferiores são mantidos elevados em suportes especiais. A medida de segurança específica dessa posição para prevenir compressão circulatória é o uso de:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q8" value="A"><span class="opt-letter">A</span><span>Travesseiro entre as pernas e correia de quadril.</span></label>
+            <label class="opt"><input type="radio" name="q8" value="B"><span class="opt-letter">B</span><span>Coxins sob os ombros e correia de joelho.</span></label>
+            <label class="opt"><input type="radio" name="q8" value="C"><span class="opt-letter">C</span><span>Perneiras acolchoadas e proteção das pernas com campos para evitar esfriamento.</span></label>
+            <label class="opt"><input type="radio" name="q8" value="D"><span class="opt-letter">D</span><span>Braçadeiras nos ombros afastadas do pescoço e correias nas coxas.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q8','C','Litotomia: perneiras acolchoadas (compressão circulatória) + campos nas pernas (esfriamento).')">Ver gabarito</button>
+          <div class="q-answer" id="q8-ans"></div>
+        </div>
+
+        <div class="q-card" id="q9">
+          <p class="q-num">Questão 09</p>
+          <p class="q-text">A posição canivete (Kraske) é derivada do decúbito ventral e é utilizada principalmente para:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q9" value="A"><span class="opt-letter">A</span><span>Neurocirurgias e mamoplastias.</span></label>
+            <label class="opt"><input type="radio" name="q9" value="B"><span class="opt-letter">B</span><span>Cirurgias de rins e ureteres.</span></label>
+            <label class="opt"><input type="radio" name="q9" value="C"><span class="opt-letter">C</span><span>Cirurgias da região anal e coluna lombar, mantendo a região operatória no ponto mais elevado.</span></label>
+            <label class="opt"><input type="radio" name="q9" value="D"><span class="opt-letter">D</span><span>Cirurgias abdominais e vasculares que exigem ampla exposição do campo operatório.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q9','C','Kraske: MMII, tórax e MMSS abaixados, região anal/lombar elevada. Indicada para proctologia e coluna lombar.')">Ver gabarito</button>
+          <div class="q-answer" id="q9-ans"></div>
+        </div>
+
+        <div class="q-card" id="q10">
+          <p class="q-num">Questão 10</p>
+          <p class="q-text">Sobre as medidas de segurança no posicionamento cirúrgico do paciente, analise as afirmativas: I. Na posição lateral (Sims), deve-se colocar travesseiro entre as pernas para prevenir flebite por compressão circulatória. II. Na posição prona, coxins sob os ombros são dispensáveis quando o paciente é do sexo masculino. III. A alopecia focal pode ocorrer na região occipital, sendo recomendado que o anestesista vire a cabeça do paciente a cada 30 minutos. Estão CORRETAS:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q10" value="A"><span class="opt-letter">A</span><span>Apenas I e III.</span></label>
+            <label class="opt"><input type="radio" name="q10" value="B"><span class="opt-letter">B</span><span>Apenas II e III.</span></label>
+            <label class="opt"><input type="radio" name="q10" value="C"><span class="opt-letter">C</span><span>Apenas I e II.</span></label>
+            <label class="opt"><input type="radio" name="q10" value="D"><span class="opt-letter">D</span><span>I, II e III.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q10','A','I e III corretas. II é incorreta: coxins sob os ombros facilitam movimentos respiratórios em ambos os sexos — nas mulheres há também a liberação das mamas.')">Ver gabarito</button>
+          <div class="q-answer" id="q10-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUIZ BLOCK 3: Anestesia -->
+    <div class="quiz-block" id="qb-anest">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-anest')">
+        <span class="qtopic-icon">💉</span>
+        <span class="qtopic-label">Anestesia</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q11">
+          <p class="q-num">Questão 11</p>
+          <p class="q-text">Qual das alternativas abaixo expressa corretamente a diferença entre anestesia e analgesia?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q11" value="A"><span class="opt-letter">A</span><span>Na analgesia há perda da consciência, enquanto na anestesia a consciência é preservada.</span></label>
+            <label class="opt"><input type="radio" name="q11" value="B"><span class="opt-letter">B</span><span>A anestesia é caracterizada pela perda da sensibilidade dolorosa com perda da consciência e amnésia; a analgesia pela perda da dor com preservação da consciência.</span></label>
+            <label class="opt"><input type="radio" name="q11" value="C"><span class="opt-letter">C</span><span>Ambas provocam perda total da consciência, diferindo apenas na duração do efeito.</span></label>
+            <label class="opt"><input type="radio" name="q11" value="D"><span class="opt-letter">D</span><span>A anestesia atua exclusivamente no sistema nervoso periférico, enquanto a analgesia age no sistema nervoso central.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q11','B','Anestesia = perda da dor + inconsciência + amnésia. Analgesia = perda da dor com consciência preservada.')">Ver gabarito</button>
+          <div class="q-answer" id="q11-ans"></div>
+        </div>
+
+        <div class="q-card" id="q12">
+          <p class="q-num">Questão 12</p>
+          <p class="q-text">A raquianestesia consiste na introdução do anestésico no espaço subaracnóideo a nível lombar. Uma das complicações mais comuns desta técnica é a cefaleia pós-punção. O tratamento indicado inclui:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q12" value="A"><span class="opt-letter">A</span><span>Posição de Trendelenburg, oxigenoterapia e administração de vasopressores.</span></label>
+            <label class="opt"><input type="radio" name="q12" value="B"><span class="opt-letter">B</span><span>Decúbito dorsal, hidratação e analgésico sistêmico.</span></label>
+            <label class="opt"><input type="radio" name="q12" value="C"><span class="opt-letter">C</span><span>Sedação imediata e reintubação orotraqueal.</span></label>
+            <label class="opt"><input type="radio" name="q12" value="D"><span class="opt-letter">D</span><span>Elevação do decúbito a 45° e administração de corticosteroides.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q12','B','Cefaleia pós-raquianestesia: pulsátil, piora ao elevar o decúbito. Tratamento: decúbito dorsal + hidratação + analgésico sistêmico.')">Ver gabarito</button>
+          <div class="q-answer" id="q12-ans"></div>
+        </div>
+
+        <div class="q-card" id="q13">
+          <p class="q-num">Questão 13</p>
+          <p class="q-text">O Trendelenburg reverso (proclive) é indicado para cirurgias da tireoide. Nessa modificação, para facilitar o acesso cirúrgico ao pescoço, realiza-se:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q13" value="A"><span class="opt-letter">A</span><span>Flexão do pescoço com apoio de coxim suboccipital.</span></label>
+            <label class="opt"><input type="radio" name="q13" value="B"><span class="opt-letter">B</span><span>Rotação lateral da cabeça com fixação por braçadeiras cranianas.</span></label>
+            <label class="opt"><input type="radio" name="q13" value="C"><span class="opt-letter">C</span><span>Hiperestensão do pescoço pela elevação dos ombros do paciente.</span></label>
+            <label class="opt"><input type="radio" name="q13" value="D"><span class="opt-letter">D</span><span>Posicionamento em decúbito lateral com apoio anterior e posterior do tronco.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q13','C','No Trendelenburg reverso para tireóide, o pescoço é hiperestendido pela elevação dos ombros.')">Ver gabarito</button>
+          <div class="q-answer" id="q13-ans"></div>
+        </div>
+
+        <div class="q-card" id="q14">
+          <p class="q-num">Questão 14</p>
+          <p class="q-text">A anestesia peridural se diferencia da raquianestesia porque o anestésico é introduzido no espaço epidural, que circunda a duramater. Sobre a peridural, é CORRETO afirmar:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q14" value="A"><span class="opt-letter">A</span><span>Apresenta menor risco de cefaleia pós-punção e ausência de complicações neurológicas, porém é de maior dificuldade técnica.</span></label>
+            <label class="opt"><input type="radio" name="q14" value="B"><span class="opt-letter">B</span><span>Tem início de ação mais rápido que a raquianestesia e não requer acesso venoso.</span></label>
+            <label class="opt"><input type="radio" name="q14" value="C"><span class="opt-letter">C</span><span>É contraindicada para cirurgias abdominais e ginecológicas.</span></label>
+            <label class="opt"><input type="radio" name="q14" value="D"><span class="opt-letter">D</span><span>Elimina completamente o risco de toxicidade sistêmica por não utilizar via venosa.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q14','A','Peridural: ausência de complicações neurológicas e menor alteração de PA como vantagens; dificuldade técnica e nível de anestesia difícil de controlar como desvantagens.')">Ver gabarito</button>
+          <div class="q-answer" id="q14-ans"></div>
+        </div>
+
+        <div class="q-card" id="q15">
+          <p class="q-num">Questão 15</p>
+          <p class="q-text">Durante a reversão da anestesia geral, o anestesiologista administra drogas antagonistas. O Flumazenil é utilizado para reverter especificamente o efeito de qual classe de drogas?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q15" value="A"><span class="opt-letter">A</span><span>Opiáceos, como fentanil e morfina.</span></label>
+            <label class="opt"><input type="radio" name="q15" value="B"><span class="opt-letter">B</span><span>Relaxantes musculares, como vecurônio e pancurônio.</span></label>
+            <label class="opt"><input type="radio" name="q15" value="C"><span class="opt-letter">C</span><span>Agentes inalatórios halogenados, como sevoflurano.</span></label>
+            <label class="opt"><input type="radio" name="q15" value="D"><span class="opt-letter">D</span><span>Benzodiazepínicos, como midazolam.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q15','D','Flumazenil reverte benzodiazepínicos · Naloxona reverte opiáceos · Neostigmina reverte relaxantes musculares.')">Ver gabarito</button>
+          <div class="q-answer" id="q15-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUIZ BLOCK 4: Pré-Anestesia -->
+    <div class="quiz-block" id="qb-pre">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-pre')">
+        <span class="qtopic-icon">📋</span>
+        <span class="qtopic-label">Pré-Anestesia</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q16">
+          <p class="q-num">Questão 16</p>
+          <p class="q-text">A pré-anestesia consiste no preparo clínico e emocional do paciente antes do ato anestésico-cirúrgico. São finalidades das drogas pré-anestésicas, EXCETO:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q16" value="A"><span class="opt-letter">A</span><span>Reduzir a ansiedade e promover sedação.</span></label>
+            <label class="opt"><input type="radio" name="q16" value="B"><span class="opt-letter">B</span><span>Induzir amnésia no período cirúrgico.</span></label>
+            <label class="opt"><input type="radio" name="q16" value="C"><span class="opt-letter">C</span><span>Substituir completamente o agente anestésico principal durante o ato cirúrgico.</span></label>
+            <label class="opt"><input type="radio" name="q16" value="D"><span class="opt-letter">D</span><span>Amenizar os efeitos colaterais dos agentes anestésicos.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q16','C','A pré-anestesia prepara o paciente, mas não substitui o anestésico principal — ela complementa e melhora as condições para o ato cirúrgico.')">Ver gabarito</button>
+          <div class="q-answer" id="q16-ans"></div>
+        </div>
+
+        <div class="q-card" id="q17">
+          <p class="q-num">Questão 17</p>
+          <p class="q-text">Na avaliação pré-anestésica, são fatores a serem considerados pelo anestesista. Assinale a alternativa que NÃO integra essa avaliação:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q17" value="A"><span class="opt-letter">A</span><span>Identificação do paciente e diagnóstico da patologia cirúrgica.</span></label>
+            <label class="opt"><input type="radio" name="q17" value="B"><span class="opt-letter">B</span><span>Constituição física, peso e uso de álcool, tóxicos e fumo.</span></label>
+            <label class="opt"><input type="radio" name="q17" value="C"><span class="opt-letter">C</span><span>Preferência do paciente quanto ao tipo de curativo pós-operatório.</span></label>
+            <label class="opt"><input type="radio" name="q17" value="D"><span class="opt-letter">D</span><span>Exame da cabeça, pescoço e vias aéreas, e diagnóstico de moléstias intercorrentes.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q17','C','Preferência de curativo não integra a avaliação pré-anestésica. Os fatores são: identificação, diagnóstico, idade, peso, uso de substâncias e exame das vias aéreas.')">Ver gabarito</button>
+          <div class="q-answer" id="q17-ans"></div>
+        </div>
+
+        <div class="q-card" id="q18">
+          <p class="q-num">Questão 18</p>
+          <p class="q-text">Quanto à responsabilidade pela orientação sobre anestesia ao paciente cirúrgico, assinale a afirmativa CORRETA:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q18" value="A"><span class="opt-letter">A</span><span>É exclusiva do médico cirurgião, que detém o maior vínculo com o paciente.</span></label>
+            <label class="opt"><input type="radio" name="q18" value="B"><span class="opt-letter">B</span><span>Deve ser feita pelo médico anestesista e completada pela enfermeira.</span></label>
+            <label class="opt"><input type="radio" name="q18" value="C"><span class="opt-letter">C</span><span>É delegada exclusivamente ao técnico de enfermagem que irá circular na sala.</span></label>
+            <label class="opt"><input type="radio" name="q18" value="D"><span class="opt-letter">D</span><span>Compete ao psicólogo hospitalar, que deve orientar o paciente antes do ato cirúrgico.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q18','B','A orientação deve ser feita pelo médico anestesista e completada pela enfermeira.')">Ver gabarito</button>
+          <div class="q-answer" id="q18-ans"></div>
+        </div>
+
+        <div class="q-card" id="q19">
+          <p class="q-num">Questão 19</p>
+          <p class="q-text">Os anticolinérgicos são frequentemente utilizados como drogas pré-anestésicas. O principal motivo que justifica seu uso nesse contexto é:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q19" value="A"><span class="opt-letter">A</span><span>Promover sedação profunda e amnésia anterógrada.</span></label>
+            <label class="opt"><input type="radio" name="q19" value="B"><span class="opt-letter">B</span><span>Reverter o efeito de relaxantes musculares utilizados na indução anestésica.</span></label>
+            <label class="opt"><input type="radio" name="q19" value="C"><span class="opt-letter">C</span><span>Diminuir a produção de secreção pelas vias aéreas superiores, prevenindo broncoaspiração.</span></label>
+            <label class="opt"><input type="radio" name="q19" value="D"><span class="opt-letter">D</span><span>Aumentar a contratilidade miocárdica e elevar a pressão arterial no intraoperatório.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q19','C','Anticolinérgicos (ex: atropina) reduzem secreção das vias aéreas, prevenindo broncoaspiração — frequente sob efeito anestésico pela diminuição dos reflexos laríngeos.')">Ver gabarito</button>
+          <div class="q-answer" id="q19-ans"></div>
+        </div>
+
+        <div class="q-card" id="q20">
+          <p class="q-num">Questão 20</p>
+          <p class="q-text">Os opiáceos são utilizados como pré-anestésicos por sua ação analgésica. Porém, apresentam efeitos colaterais importantes. Assinale a alternativa que lista CORRETAMENTE os efeitos adversos dos opiáceos:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q20" value="A"><span class="opt-letter">A</span><span>Taquicardia, hipertensão arterial, midríase e agitação psicomotora.</span></label>
+            <label class="opt"><input type="radio" name="q20" value="B"><span class="opt-letter">B</span><span>Náuseas, vômitos, constipação intestinal, retenção urinária, bradicardia e hipotensão.</span></label>
+            <label class="opt"><input type="radio" name="q20" value="C"><span class="opt-letter">C</span><span>Boca seca, turvação da visão, taquicardia e agitação ao despertar.</span></label>
+            <label class="opt"><input type="radio" name="q20" value="D"><span class="opt-letter">D</span><span>Hipotensão arterial, depressão respiratória, agitação e sonolência pós-operatória.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q20','B','Opiáceos: náuseas, vômitos, constipação, retenção urinária, bradicardia e hipotensão. (Boca seca/taquicardia = anticolinérgicos; D = fenotiazinas)')">Ver gabarito</button>
+          <div class="q-answer" id="q20-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUIZ BLOCK 5: Drogas -->
+    <div class="quiz-block" id="qb-drogas">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-drogas')">
+        <span class="qtopic-icon">💊</span>
+        <span class="qtopic-label">Drogas Anestésicas</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q21">
+          <p class="q-num">Questão 21</p>
+          <p class="q-text">Sobre os relaxantes musculares utilizados na anestesia, é CORRETO afirmar que:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q21" value="A"><span class="opt-letter">A</span><span>Proporcionam sedação e analgesia eficazes, sendo dispensável o uso de hipnóticos associados.</span></label>
+            <label class="opt"><input type="radio" name="q21" value="B"><span class="opt-letter">B</span><span>São utilizados exclusivamente por via inalatória, misturados ao óxido nitroso.</span></label>
+            <label class="opt"><input type="radio" name="q21" value="C"><span class="opt-letter">C</span><span>Paralisam farmacologicamente o paciente sem oferecer sedação ou analgesia, sendo usados para facilitar intubação e relaxamento muscular cirúrgico.</span></label>
+            <label class="opt"><input type="radio" name="q21" value="D"><span class="opt-letter">D</span><span>Têm como principal indicação o controle da dor aguda no pós-operatório imediato.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q21','C','Relaxantes musculares paralisam o paciente farmacologicamente — NÃO oferecem sedação nem analgesia. São usados para intubação, relaxamento cirúrgico e ventilação mecânica.')">Ver gabarito</button>
+          <div class="q-answer" id="q21-ans"></div>
+        </div>
+
+        <div class="q-card" id="q22">
+          <p class="q-num">Questão 22</p>
+          <p class="q-text">O Óxido Nitroso (N₂O) é o anestésico gasoso mais utilizado. Em relação a suas características, assinale a alternativa INCORRETA:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q22" value="A"><span class="opt-letter">A</span><span>Não é inflamável nem explosivo, ao contrário do etileno e ciclopropano.</span></label>
+            <label class="opt"><input type="radio" name="q22" value="B"><span class="opt-letter">B</span><span>Apresenta potência anestésica elevada, sendo suficiente para uso isolado em cirurgias de grande porte.</span></label>
+            <label class="opt"><input type="radio" name="q22" value="C"><span class="opt-letter">C</span><span>Possui efeito analgésico e cheiro agradável, não sendo irritante para as vias aéreas.</span></label>
+            <label class="opt"><input type="radio" name="q22" value="D"><span class="opt-letter">D</span><span>Tem como efeitos colaterais mais comuns náuseas e vômitos, especialmente em cirurgias prolongadas.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q22','B','O N₂O tem potência anestésica BAIXA, sendo necessário associá-lo a outros agentes mais potentes e relaxantes musculares.')">Ver gabarito</button>
+          <div class="q-answer" id="q22-ans"></div>
+        </div>
+
+        <div class="q-card" id="q23">
+          <p class="q-num">Questão 23</p>
+          <p class="q-text">Os anestésicos intravenosos apresentam uma margem de segurança muito estreita. Isso significa que:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q23" value="A"><span class="opt-letter">A</span><span>A dose terapêutica é muito superior à dose tóxica, exigindo doses elevadas para o efeito desejado.</span></label>
+            <label class="opt"><input type="radio" name="q23" value="B"><span class="opt-letter">B</span><span>A dose anestésica efetiva encontra-se próxima da dose letal, requerendo avaliação detalhada e acesso venoso pérvio com tree-way.</span></label>
+            <label class="opt"><input type="radio" name="q23" value="C"><span class="opt-letter">C</span><span>Devem ser administrados exclusivamente por via intramuscular para reduzir o risco de superdosagem.</span></label>
+            <label class="opt"><input type="radio" name="q23" value="D"><span class="opt-letter">D</span><span>São contraindicados em pacientes idosos por não possuírem margem segura de reversão.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q23','B','Anestésicos IV: dose anestésica efetiva próxima da dose letal — exige avaliação minuciosa e acesso venoso pérvio com tree-way.')">Ver gabarito</button>
+          <div class="q-answer" id="q23-ans"></div>
+        </div>
+
+        <div class="q-card" id="q24">
+          <p class="q-num">Questão 24</p>
+          <p class="q-text">Os hipnóticos não barbitúricos, como o Propofol e o Etomidato, são indicados em detrimento dos barbitúricos em qual situação clínica?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q24" value="A"><span class="opt-letter">A</span><span>Em pacientes pediátricos, pois os barbitúricos causam depressão respiratória severa nessa faixa etária.</span></label>
+            <label class="opt"><input type="radio" name="q24" value="B"><span class="opt-letter">B</span><span>Em pacientes alérgicos a barbitúricos ou que fazem uso de drogas incompatíveis com eles, como álcool, aspirina e anticoagulantes.</span></label>
+            <label class="opt"><input type="radio" name="q24" value="C"><span class="opt-letter">C</span><span>Em cirurgias de emergência, pois têm início de ação mais lento e menor risco de hipotensão.</span></label>
+            <label class="opt"><input type="radio" name="q24" value="D"><span class="opt-letter">D</span><span>Em pacientes com insuficiência renal, pois são metabolizados exclusivamente pelo fígado.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q24','B','Não barbitúricos (Propofol, Etomidato) são indicados para alérgicos a barbitúricos ou usuários de drogas incompatíveis: álcool, aspirina, anticoagulantes e outros barbitúricos.')">Ver gabarito</button>
+          <div class="q-answer" id="q24-ans"></div>
+        </div>
+
+        <div class="q-card" id="q25">
+          <p class="q-num">Questão 25</p>
+          <p class="q-text">Qual das alternativas abaixo relaciona CORRETAMENTE o antagonista à sua respectiva droga revertida?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q25" value="A"><span class="opt-letter">A</span><span>Flumazenil → opiáceos / Naloxona → benzodiazepínicos / Neostigmina → relaxantes musculares.</span></label>
+            <label class="opt"><input type="radio" name="q25" value="B"><span class="opt-letter">B</span><span>Naloxona → opiáceos / Flumazenil → benzodiazepínicos / Neostigmina → relaxantes musculares.</span></label>
+            <label class="opt"><input type="radio" name="q25" value="C"><span class="opt-letter">C</span><span>Neostigmina → opiáceos / Flumazenil → relaxantes musculares / Naloxona → benzodiazepínicos.</span></label>
+            <label class="opt"><input type="radio" name="q25" value="D"><span class="opt-letter">D</span><span>Naloxona → benzodiazepínicos / Neostigmina → opiáceos / Flumazenil → relaxantes musculares.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q25','B','Naloxona → opiáceos (fentanil, morfina) · Flumazenil → benzodiazepínicos (midazolam) · Neostigmina → relaxantes musculares (vecurônio, pancurônio).')">Ver gabarito</button>
+          <div class="q-answer" id="q25-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUIZ BLOCK 6: Assistência de Enfermagem -->
+    <div class="quiz-block" id="qb-assist">
+      <button class="quiz-topic-btn" onclick="toggleQuiz('qb-assist')">
+        <span class="qtopic-icon">🩺</span>
+        <span class="qtopic-label">Assistência de Enfermagem</span>
+        <span class="qtopic-count">5 questões</span>
+        <span class="qtopic-chevron">▼</span>
+      </button>
+      <div class="quiz-body">
+
+        <div class="q-card" id="q26">
+          <p class="q-num">Questão 26</p>
+          <p class="q-text">Durante a anestesia geral, o paciente perde a capacidade de se defender de qualquer agressão física. Diante disso, é dever do circulante de sala verificar se os olhos do paciente estão bem ocluídos. Qual o principal risco que essa medida visa prevenir?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q26" value="A"><span class="opt-letter">A</span><span>Aumento da pressão intraocular causado pela posição cirúrgica.</span></label>
+            <label class="opt"><input type="radio" name="q26" value="B"><span class="opt-letter">B</span><span>Úlceras graves de córnea por exposição e ressecamento.</span></label>
+            <label class="opt"><input type="radio" name="q26" value="C"><span class="opt-letter">C</span><span>Contaminação do campo cirúrgico por secreções oculares.</span></label>
+            <label class="opt"><input type="radio" name="q26" value="D"><span class="opt-letter">D</span><span>Estimulação do reflexo oculocardíaco durante procedimentos longos.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q26','B','Os olhos devem estar ocluídos para prevenir úlceras graves de córnea por exposição.')">Ver gabarito</button>
+          <div class="q-answer" id="q26-ans"></div>
+        </div>
+
+        <div class="q-card" id="q27">
+          <p class="q-num">Questão 27</p>
+          <p class="q-text">Em relação ao acesso vascular durante o ato anestésico, qual afirmativa está CORRETA?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q27" value="A"><span class="opt-letter">A</span><span>O acesso venoso deve ser estabelecido somente após a indução anestésica, para não causar ansiedade ao paciente.</span></label>
+            <label class="opt"><input type="radio" name="q27" value="B"><span class="opt-letter">B</span><span>É obrigatório o uso de acesso venoso central em todos os procedimentos cirúrgicos eletivos.</span></label>
+            <label class="opt"><input type="radio" name="q27" value="C"><span class="opt-letter">C</span><span>O extravasamento de certas drogas para o tecido subcutâneo pode provocar necrose tecidual, sendo essencial manter o acesso pérvio.</span></label>
+            <label class="opt"><input type="radio" name="q27" value="D"><span class="opt-letter">D</span><span>O acesso venoso periférico é contraindicado quando se utilizam drogas anestésicas intravenosas, devendo-se optar pela via intramuscular.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q27','C','O extravasamento de alguns anestésicos IV para o subcutâneo pode causar necrose tecidual — manter acesso pérvio é essencial.')">Ver gabarito</button>
+          <div class="q-answer" id="q27-ans"></div>
+        </div>
+
+        <div class="q-card" id="q28">
+          <p class="q-num">Questão 28</p>
+          <p class="q-text">Sobre a monitorização do paciente durante a anestesia, assinale a alternativa que apresenta os equipamentos IMPRESCINDÍVEIS conforme o conteúdo estudado:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q28" value="A"><span class="opt-letter">A</span><span>Capnógrafo, termômetro esofágico e monitor de pressão arterial invasiva.</span></label>
+            <label class="opt"><input type="radio" name="q28" value="B"><span class="opt-letter">B</span><span>Esfigmomanômetro, monitor de ECG e saturímetro (oxímetro de pulso).</span></label>
+            <label class="opt"><input type="radio" name="q28" value="C"><span class="opt-letter">C</span><span>Monitor de BIS (índice bispectral), gasômetro arterial e desfibrilador externo.</span></label>
+            <label class="opt"><input type="radio" name="q28" value="D"><span class="opt-letter">D</span><span>Bomba de infusão contínua, monitor de temperatura central e cateter de Swan-Ganz.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q28','B','Monitorização básica obrigatória: esfigmomanômetro (PA), monitor de ECG (ritmo cardíaco) e saturímetro (SpO₂).')">Ver gabarito</button>
+          <div class="q-answer" id="q28-ans"></div>
+        </div>
+
+        <div class="q-card" id="q29">
+          <p class="q-num">Questão 29</p>
+          <p class="q-text">Ao posicionar a placa neutra do bisturi elétrico (eletrocautério), o circulante de sala deve:</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q29" value="A"><span class="opt-letter">A</span><span>Posicioná-la preferencialmente sobre proeminências ósseas para garantir melhor condução elétrica.</span></label>
+            <label class="opt"><input type="radio" name="q29" value="B"><span class="opt-letter">B</span><span>Posicioná-la corretamente e verificar as condições da área, evitando que partes do corpo tenham contato direto com objetos metálicos, incluindo a mesa cirúrgica.</span></label>
+            <label class="opt"><input type="radio" name="q29" value="C"><span class="opt-letter">C</span><span>Fixá-la sobre a região cervical do paciente para minimizar a resistência elétrica do circuito.</span></label>
+            <label class="opt"><input type="radio" name="q29" value="D"><span class="opt-letter">D</span><span>Instalá-la somente após o início do procedimento cirúrgico, mediante solicitação do cirurgião.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q29','B','Placa neutra: posicionar corretamente e verificar condições da área + evitar contato com metais (inclusive a mesa) para prevenir acidentes elétricos.')">Ver gabarito</button>
+          <div class="q-answer" id="q29-ans"></div>
+        </div>
+
+        <div class="q-card" id="q30">
+          <p class="q-num">Questão 30</p>
+          <p class="q-text">Em relação à hipotensão arterial como complicação da raquianestesia, qual é o mecanismo fisiopatológico e o tratamento preconizado?</p>
+          <div class="q-options">
+            <label class="opt"><input type="radio" name="q30" value="A"><span class="opt-letter">A</span><span>Vasoconstrição periférica por bloqueio simpático → tratamento com diuréticos e restrição hídrica.</span></label>
+            <label class="opt"><input type="radio" name="q30" value="B"><span class="opt-letter">B</span><span>Depressão miocárdica direta pelo anestésico → tratamento com atropina e marca-passo temporário.</span></label>
+            <label class="opt"><input type="radio" name="q30" value="C"><span class="opt-letter">C</span><span>Bloqueio do sistema nervoso simpático com dilatação de capilares arteriais e venosos → tratamento: hidratação rigorosa, oxigenoterapia e posição de Trendelenburg.</span></label>
+            <label class="opt"><input type="radio" name="q30" value="D"><span class="opt-letter">D</span><span>Hiperatividade vagal por estimulação medular → tratamento com adrenalina e ressuscitação cardiopulmonar.</span></label>
+          </div>
+          <button class="reveal-btn" onclick="reveal('q30','C','Hipotensão na raquianestesia: bloqueio simpático → vasodilatação arterial e venosa. Tratamento: hidratação rigorosa + oxigenoterapia + Trendelenburg.')">Ver gabarito</button>
+          <div class="q-answer" id="q30-ans"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<style>
+  /* QUIZ STYLES */
+  .quiz-block {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .quiz-topic-btn {
+    width: 100%;
+    background: var(--surface);
+    border: none;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .quiz-topic-btn:hover { background: var(--surface2); }
+  .qtopic-icon { font-size: 20px; flex-shrink: 0; }
+  .qtopic-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    flex: 1;
+  }
+  .qtopic-count {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .qtopic-chevron {
+    color: var(--muted);
+    font-size: 14px;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .quiz-topic-btn.open .qtopic-chevron { transform: rotate(180deg); }
+  .quiz-topic-btn.open { background: var(--surface2); border-bottom: 1px solid var(--border); }
+
+  .quiz-body {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+  }
+  .quiz-body.open { display: flex; }
+
+  /* QUESTION CARD */
+  .q-card {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    transition: background 0.15s;
+  }
+  .q-card:last-child { border-bottom: none; }
+  .q-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .q-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--surface);
+  }
+  .opt:hover { border-color: rgba(0,212,170,0.3); background: var(--teal-dim); }
+  .opt input[type="radio"] { display: none; }
+  .opt-letter {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--muted);
+    min-width: 18px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .opt span:last-child { font-size: 13.5px; color: #c9d1d9; line-height: 1.5; }
+  .opt.selected { border-color: rgba(88,166,255,0.5); background: var(--blue-dim); }
+  .opt.selected .opt-letter { color: var(--blue); }
+  .opt.correct { border-color: rgba(0,212,170,0.6) !important; background: rgba(0,212,170,0.1) !important; }
+  .opt.correct .opt-letter { color: var(--teal) !important; }
+  .opt.wrong { border-color: rgba(224,92,122,0.5) !important; background: rgba(224,92,122,0.08) !important; }
+  .opt.wrong .opt-letter { color: var(--rose) !important; }
+
+  .reveal-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .reveal-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
+  .reveal-btn:disabled { opacity: 0.4; cursor: default; }
+
+  .q-answer {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #a3f0e0;
+    background: rgba(0,212,170,0.07);
+    border: 1px solid rgba(0,212,170,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: none;
+  }
+  .q-answer.show { display: block; }
+</style>
+
 <div class="footer">
   Material de estudo — Clínica Cirúrgica I · Profa. Jucélia Schittini &nbsp;|&nbsp; Use como complemento, não substitua o conteúdo completo das aulas.
 </div>
 
 <script>
-  // Accordion
+  // ── Accordion (conteúdo de estudo) ──────────────────────────────
   function toggle(btn) {
     const body = btn.nextElementSibling;
     const isOpen = body.classList.contains('show');
-    // close all
     document.querySelectorAll('.acc-body.show').forEach(b => b.classList.remove('show'));
     document.querySelectorAll('.acc-btn.open').forEach(b => b.classList.remove('open'));
     if (!isOpen) {
@@ -1197,33 +1832,78 @@
     }
   }
 
-  // Hamburger
-  function toggleMenu() {
-    const btn = document.getElementById('hamBtn');
-    const drawer = document.getElementById('navDrawer');
-    btn.classList.toggle('open');
-    drawer.classList.toggle('open');
+  // ── Quiz: abrir/fechar bloco por tema ───────────────────────────
+  function toggleQuiz(id) {
+    const block = document.getElementById(id);
+    const btn   = block.querySelector('.quiz-topic-btn');
+    const body  = block.querySelector('.quiz-body');
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.quiz-body.open').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.quiz-topic-btn.open').forEach(b => b.classList.remove('open'));
+    if (!isOpen) {
+      body.classList.add('open');
+      btn.classList.add('open');
+    }
   }
 
-  // Nav active on scroll
-  const sections = document.querySelectorAll('.section');
-  const navLinks = document.querySelectorAll('.nav-links a, .nav-drawer a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
+  // ── Quiz: selecionar alternativa ────────────────────────────────
+  document.querySelectorAll('.opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      var name = opt.querySelector('input').name;
+      document.querySelectorAll('input[name="' + name + '"]').forEach(function(i) {
+        i.closest('.opt').classList.remove('selected');
+      });
+      opt.classList.add('selected');
+      opt.querySelector('input').checked = true;
+    });
+  });
+
+  // ── Quiz: revelar gabarito ───────────────────────────────────────
+  function reveal(qid, correct, explanation) {
+    var card   = document.getElementById(qid);
+    var opts   = card.querySelectorAll('.opt');
+    var ansDiv = document.getElementById(qid + '-ans');
+    var revBtn = card.querySelector('.reveal-btn');
+    opts.forEach(function(opt) {
+      var letter = opt.querySelector('.opt-letter').textContent.trim();
+      if (letter === correct) {
+        opt.classList.add('correct');
+      } else if (opt.classList.contains('selected')) {
+        opt.classList.add('wrong');
+      }
+    });
+    ansDiv.innerHTML = '<strong>Gabarito: ' + correct + '</strong> — ' + explanation;
+    ansDiv.classList.add('show');
+    revBtn.disabled = true;
+  }
+
+  // ── Hamburger menu ───────────────────────────────────────────────
+  function toggleMenu() {
+    document.getElementById('hamBtn').classList.toggle('open');
+    document.getElementById('navDrawer').classList.toggle('open');
+  }
+
+  // ── Nav: destaque de seção ativa no scroll ───────────────────────
+  var allSections = document.querySelectorAll('.section');
+  var navLinks    = document.querySelectorAll('.nav-links a, .nav-drawer a');
+  window.addEventListener('scroll', function() {
+    var current = '';
+    allSections.forEach(function(s) {
       if (window.scrollY >= s.offsetTop - 120) current = s.id;
     });
-    navLinks.forEach(a => {
+    navLinks.forEach(function(a) {
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
   });
 
-  // Smooth scroll + close drawer on click
-  navLinks.forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
-      // close mobile drawer
+  // ── Nav: scroll suave + fechar drawer ───────────────────────────
+  navLinks.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
       document.getElementById('hamBtn').classList.remove('open');
       document.getElementById('navDrawer').classList.remove('open');
     });
